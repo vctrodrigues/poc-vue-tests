@@ -1,0 +1,140 @@
+@use "sass:map";
+@import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+:root {
+  --app-color-primary: #{$app-color-primary};
+  --app-color-primary-lighten: #{$app-color-primary-lighten};
+  --app-color-primary-darken-1: #{$app-color-primary-darken-1};
+  --app-color-primary-darken-2: #{$app-color-primary-darken-2};
+  --app-color-primary-opacity-5: #{$app-color-primary-opacity-5};
+
+  --app-color-secondary: #{$app-color-secondary};
+
+  --app-color-background-lighten-1: #{$app-color-background-lighten-1};
+  --app-color-background-lighten-2: #{$app-color-background-lighten-2};
+  --app-color-background: #{$app-color-background};
+
+  --app-color-white: #{$app-color-white};
+  --app-color-black: #{$app-color-black};
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--app-color-background);
+  color: var(--app-color-primary);
+}
+
+* {
+  font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+
+  box-sizing: border-box;
+}
+
+b,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+html {
+  font-size: 87.5%;
+}
+
+p,
+span,
+b,
+strong,
+i {
+  font-size: 1rem; // 14px
+}
+
+h1 {
+  font-size: 3rem; // 42px
+}
+
+h2 {
+  font-size: 2.57rem; // 38px
+}
+
+h3 {
+  font-size: 2.28rem; // 32px
+}
+
+h4 {
+  font-size: 1.71rem; // 24px
+}
+
+h5 {
+  font-size: 1.42rem; // 20px
+}
+
+h6 {
+  font-size: 1.28rem; // 18px
+}
+
+a {
+  color: var(--app-color-primary);
+
+  &:link {
+    text-decoration: none;
+  }
+}
+
+// common css
+@each $key, $value in $margins {
+  @each $index, $size in $value {
+    .app-#{$key}-#{$index} {
+      @if $key == ma {
+        margin: calc($size * 2);
+      } @else if $key == my {
+        margin-top: calc($size * 2);
+        margin-bottom: calc($size * 2);
+      } @else if $key == mx {
+        margin-left: calc($size * 2);
+        margin-right: calc($size * 2);
+      } @else if $key == mt {
+        margin-top: calc($size * 2);
+      } @else if $key == mr {
+        margin-right: calc($size * 2);
+      } @else if $key == mb {
+        margin-bottom: calc($size * 2);
+      } @else if $key == ml {
+        margin-left: calc($size * 2);
+      }
+    }
+  }
+}
+
+@each $key, $value in $paddings {
+  @each $index, $size in $value {
+    .app-#{$key}-#{$index} {
+      @if $key == pa {
+        padding: calc($size * 2);
+      } @else if $key == py {
+        padding-top: calc($size * 2);
+        padding-bottom: calc($size * 2);
+      } @else if $key == px {
+        padding-left: calc($size * 2);
+        padding-right: calc($size * 2);
+      } @else if $key == pt {
+        padding-top: calc($size * 2);
+      } @else if $key == pr {
+        padding-right: calc($size * 2);
+      } @else if $key == pb {
+        padding-bottom: calc($size * 2);
+      } @else if $key == pl {
+        padding-left: calc($size * 2);
+      }
+    }
+  }
+}

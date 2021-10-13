@@ -1,0 +1,46 @@
+@use "sass:map";
+
+$app-color-primary: rgb(111, 156, 235);
+$app-color-primary-lighten: rgb(152, 185, 242);
+$app-color-primary-darken-1: rgb(48, 107, 172);
+$app-color-primary-darken-2: rgb(18, 47, 102);
+$app-color-primary-opacity-5: rgba(111, 156, 235, 0.5);
+$app-color-secondary: rgb(145, 142, 244);
+$app-color-background-lighten-1: rgb(20, 27, 65);
+$app-color-background-lighten-2: rgb(10, 17, 45);
+$app-color-background: rgb(0, 07, 25);
+$app-color-white: rgb(240, 240, 240);
+$app-color-black: rgb(33, 33, 33);
+
+// Margins and paddings
+$sizes: (
+  "0": 0px,
+  "1": 8px,
+  "2": 16px,
+  "3": 24px,
+  "4": 32px,
+  "5": 40px,
+  "6": 48px,
+  "7": 56px,
+  "8": 64px,
+);
+
+$margins: (
+  "ma": $sizes,
+  "mt": $sizes,
+  "mr": $sizes,
+  "mb": $sizes,
+  "ml": $sizes,
+  "mx": $sizes,
+  "my": $sizes,
+);
+
+$paddings: (
+  "pa": $sizes,
+  "pt": $sizes,
+  "pr": $sizes,
+  "pb": $sizes,
+  "pl": $sizes,
+  "px": $sizes,
+  "py": $sizes,
+);

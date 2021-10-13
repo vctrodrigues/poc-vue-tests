@@ -23,3 +23,22 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add("login", (username, password) => {
+  cy.get("#username").clear().type(username);
+  cy.get("#password").clear().type(password);
+  cy.get("#button-login").click();
+});
+
+Cypress.Commands.add("clearCache", () => {
+  window.sessionStorage.removeItem("logged");
+  window.sessionStorage.removeItem("user");
+});
+
+Cypress.Commands.add("createTodo", (title) => {
+  cy.get("#todo-creator").clear().type(title);
+  cy.get("#todo-creator-button").click();
+});
+
+Cypress.Commands.add("removeTodo", (id) => {
+  cy.get(`#${id} .remove-button`).click();
+});

@@ -1,32 +1,65 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <theme-provider :theme="theme">
+    <div id="app">
+      <Nav>
+        <router-link
+          v-if="isLogged"
+          to="/"
+          v-slot="{ href, isExactActive }"
+          custom
+        >
+          <NavLink :href="href" :isActive="isExactActive"> Home </NavLink>
+        </router-link>
+        <NavLink id="logout-button" v-if="isLogged" @click="logout">
+          Logout
+        </NavLink>
+        <router-link
+          v-if="!isLogged"
+          to="/login"
+          v-slot="{ href, isExactActive }"
+          custom
+        >
+          <NavLink :href="href" :isActive="isExactActive"> Login </NavLink>
+        </router-link>
+      </Nav>
+      <main>
+        <router-view></router-view>
+      </main>
     </div>
-    <router-view />
-  </div>
+  </theme-provider>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { mapGetters, mapActions } from "vuex";
+import { ThemeProvider } from "vue-styled-components";
+import { Nav, NavLink } from "@/components";
+import theme from "@/components/theme";
 
-#nav {
-  padding: 30px;
+export default {
+  name: "App",
+  components: { ThemeProvider, Nav, NavLink },
+  data: () => ({
+    drawerOpen: false,
+  }),
+  computed: {
+    ...mapGetters("user", ["isLogged"]),
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    theme() {
+      return theme;
+    },
+  },
+  methods: {
+    ...mapActions("user", ["signout"]),
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    close() {
+      this.drawerOpen = false;
+    },
+
+    logout() {
+      this.signout();
+      this.$router.push("/login");
+    },
+  },
+};
+</script>
+<style lang="scss" src="./styles/global.scss"></style>

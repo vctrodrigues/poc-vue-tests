@@ -7,13 +7,20 @@
 // https://docs.cypress.io/api/plugins/preprocessors-api.html#Examples
 
 // /* eslint-disable import/no-extraneous-dependencies, global-require */
-// const webpack = require('@cypress/webpack-preprocessor')
+const { startDevServer } = require("@cypress/webpack-dev-server");
+const webpackConfig = require("@vue/cli-service/webpack.config");
 
 module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
+  on("dev-server:start", (options) => {
+    return startDevServer({
+      options,
+      webpackConfig,
+    });
+  });
 
   return Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
