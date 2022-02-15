@@ -1,29 +1,27 @@
-# cypress-vue
+# Vue tests using Cypress
 
-## Project setup
-```
-npm install
-```
+## Installing
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Run `npm install` and install all dependencies
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### JSON server
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+Run `npm -g install json-server` to install JSON server
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Running
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Vue
+
+Run `npm run serve`
+
+### API
+
+Run `json-server -p 3000 --watch ./fake-db/data.json`
+
+### Cypress Unit
+
+Run `npx cypress open-ct`
+
+### Cypress E2E
+
+Run `npx cypress open`
