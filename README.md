@@ -6,7 +6,7 @@ Run `npm install` and install all dependencies
 
 ### JSON server
 
-Run `npm -g install json-server` to install JSON server
+Run `npm install -g json-server` to install JSON server
 
 ## Running
 
